@@ -1,65 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="100%" height="220">
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050505" />
-      <stop offset="50%" stop-color="#070c12" />
-      <stop offset="100%" stop-color="#050807" />
+      <stop offset="0%" stop-color="#030712" />
+      <stop offset="50%" stop-color="#060c18" />
+      <stop offset="100%" stop-color="#030712" />
     </linearGradient>
 
-    <!-- Cyber Grid Pattern -->
-    <pattern id="cyber-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#00f0ff" stroke-width="0.5" stroke-opacity="0.07" />
+    <!-- Precise Cyber Grid -->
+    <pattern id="cyber-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#00f0ff" stroke-width="0.5" stroke-opacity="0.04" />
     </pattern>
 
-    <!-- Subtle Glow Filter -->
-    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
+    <!-- Sharp Glow Filter -->
+    <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00f0ff" flood-opacity="0.4" />
     </filter>
   </defs>
 
   <style>
     .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace; }
-    .title { font-weight: 800; font-size: 58px; fill: #00ff66; letter-spacing: 10px; }
-    .subtitle { font-weight: 600; font-size: 13px; fill: #00f0ff; letter-spacing: 4px; }
-    .telemetry { font-weight: 500; font-size: 10px; fill: #486581; letter-spacing: 2px; }
-    .status-ok { font-weight: 700; font-size: 10px; fill: #00ff66; letter-spacing: 1px; }
-    .accent-cyan { stroke: #00f0ff; stroke-width: 1; fill: none; }
-    .accent-green { stroke: #00ff66; stroke-width: 1; fill: none; }
   </style>
 
-  <!-- Base Plate -->
-  <rect width="920" height="220" fill="url(#bg-grad)" />
-  <rect width="920" height="220" fill="url(#cyber-grid)" />
+  <!-- Background Layer -->
+  <rect width="900" height="220" fill="url(#bg-grad)" />
+  <rect width="900" height="220" fill="url(#cyber-grid)" />
 
-  <!-- Outer Border Frame -->
-  <rect x="15" y="15" width="890" height="190" fill="none" stroke="#102a43" stroke-width="1" />
+  <!-- Outer HUD Frame -->
+  <rect x="25" y="20" width="850" height="180" rx="4" fill="none" stroke="#1e293b" stroke-width="1" />
 
   <!-- Corner Brackets -->
-  <path class="accent-cyan" d="M 15 35 L 15 15 L 35 15" />
-  <path class="accent-cyan" d="M 885 15 L 905 15 L 905 35" />
-  <path class="accent-cyan" d="M 15 185 L 15 205 L 35 205" />
-  <path class="accent-cyan" d="M 885 205 L 905 205 L 905 185" />
+  <path d="M 20 40 L 20 20 L 40 20" fill="none" stroke="#00f0ff" stroke-width="1.5" />
+  <path d="M 860 20 L 880 20 L 880 40" fill="none" stroke="#00f0ff" stroke-width="1.5" />
+  <path d="M 20 180 L 20 200 L 40 200" fill="none" stroke="#00f0ff" stroke-width="1.5" />
+  <path d="M 860 200 L 880 200 L 880 180" fill="none" stroke="#00f0ff" stroke-width="1.5" />
 
-  <!-- Telemetry Header -->
-  <text x="35" y="40" class="mono telemetry">NODE // 127.0.0.1:22</text>
-  <text x="210" y="40" class="mono telemetry">CLEARANCE // LVL-5</text>
-  <circle cx="820" cy="36" r="3.5" fill="#00ff66" filter="url(#neon-glow)" />
-  <text x="832" y="40" class="mono status-ok">SYSTEM: ONLINE</text>
+  <!-- Top HUD Bar: Left ID Badge -->
+  <rect x="45" y="32" width="190" height="22" rx="3" fill="#0b1329" stroke="#1e3a8a" stroke-width="0.8" />
+  <text x="55" y="47" class="mono" font-size="10" fill="#38bdf8" letter-spacing="1.5">ID: SALMAN // SALLZIE</text>
 
-  <line x1="35" y1="52" x2="885" y2="52" stroke="#102a43" stroke-width="0.8" />
+  <!-- Top HUD Bar: Center Telemetry -->
+  <text x="450" y="47" text-anchor="middle" class="mono" font-size="10" fill="#475569" letter-spacing="2">SYS_ARCH: HARDENED_X86_64</text>
+
+  <!-- Top HUD Bar: Right Status Pill (Contained, non-colliding) -->
+  <rect x="735" y="32" width="120" height="22" rx="3" fill="#042317" stroke="#059669" stroke-width="0.8" />
+  <circle cx="749" cy="43" r="3.5" fill="#00ff66" />
+  <text x="760" y="47" class="mono" font-size="10" font-weight="700" fill="#00ff66" letter-spacing="1.5">SYS_ONLINE</text>
+
+  <!-- Divider Line -->
+  <line x1="45" y1="64" x2="855" y2="64" stroke="#1e293b" stroke-width="1" />
 
   <!-- Center Identity Block -->
-  <text x="460" y="125" text-anchor="middle" class="mono title" filter="url(#neon-glow)">sallzie</text>
-  <text x="460" y="155" text-anchor="middle" class="mono subtitle">[ ACCESS GRANTED // ROOT_PRIVILEGES // ACTIVE ]</text>
+  <text x="450" y="118" text-anchor="middle" class="mono" font-weight="800" font-size="44" letter-spacing="8" fill="#f8fafc" filter="url(#cyan-glow)">sallzie</text>
 
-  <!-- Footer Telemetry Strip -->
-  <line x1="35" y1="178" x2="885" y2="178" stroke="#102a43" stroke-width="0.8" />
-  <text x="35" y="195" class="mono telemetry">KERNEL: LINUX-HARDENED</text>
-  <text x="460" y="195" text-anchor="middle" class="mono telemetry">SHA256: 9F8A27C...01BC</text>
-  <text x="885" y="195" text-anchor="end" class="mono telemetry">ENV: PRODUCTION</text>
+  <!-- Subtitle Badge -->
+  <rect x="180" y="136" width="540" height="24" rx="3" fill="#0b1329" fill-opacity="0.8" stroke="#0284c7" stroke-width="0.8" stroke-dasharray="4 2" />
+  <text x="450" y="152" text-anchor="middle" class="mono" font-weight="600" font-size="11" letter-spacing="2.5" fill="#00f0ff">[ SECURITY RESEARCHER // VULN ANALYST // ROOT ACCESS ]</text>
+
+  <!-- Bottom Divider Line -->
+  <line x1="45" y1="172" x2="855" y2="172" stroke="#1e293b" stroke-width="1" />
+
+  <!-- Footer Telemetry -->
+  <text x="45" y="188" class="mono" font-size="9" fill="#475569" letter-spacing="1.5">SESSION: ESTABLISHED</text>
+  <text x="450" y="188" text-anchor="middle" class="mono" font-size="9" fill="#475569" letter-spacing="2">CLEARANCE: LEVEL-5</text>
+  <text x="855" y="188" text-anchor="end" class="mono" font-size="9" fill="#475569" letter-spacing="1.5">PROTOCOL: TLS_1.3</text>
 </svg>
