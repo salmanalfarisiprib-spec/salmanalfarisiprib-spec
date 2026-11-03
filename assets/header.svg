@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="50%" stop-color="#070c12" />
+      <stop offset="100%" stop-color="#050807" />
+    </linearGradient>
+
+    <!-- Cyber Grid Pattern -->
+    <pattern id="cyber-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#00f0ff" stroke-width="0.5" stroke-opacity="0.07" />
+    </pattern>
+
+    <!-- Subtle Glow Filter -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace; }
+    .title { font-weight: 800; font-size: 58px; fill: #00ff66; letter-spacing: 10px; }
+    .subtitle { font-weight: 600; font-size: 13px; fill: #00f0ff; letter-spacing: 4px; }
+    .telemetry { font-weight: 500; font-size: 10px; fill: #486581; letter-spacing: 2px; }
+    .status-ok { font-weight: 700; font-size: 10px; fill: #00ff66; letter-spacing: 1px; }
+    .accent-cyan { stroke: #00f0ff; stroke-width: 1; fill: none; }
+    .accent-green { stroke: #00ff66; stroke-width: 1; fill: none; }
+  </style>
+
+  <!-- Base Plate -->
+  <rect width="920" height="220" fill="url(#bg-grad)" />
+  <rect width="920" height="220" fill="url(#cyber-grid)" />
+
+  <!-- Outer Border Frame -->
+  <rect x="15" y="15" width="890" height="190" fill="none" stroke="#102a43" stroke-width="1" />
+
+  <!-- Corner Brackets -->
+  <path class="accent-cyan" d="M 15 35 L 15 15 L 35 15" />
+  <path class="accent-cyan" d="M 885 15 L 905 15 L 905 35" />
+  <path class="accent-cyan" d="M 15 185 L 15 205 L 35 205" />
+  <path class="accent-cyan" d="M 885 205 L 905 205 L 905 185" />
+
+  <!-- Telemetry Header -->
+  <text x="35" y="40" class="mono telemetry">NODE // 127.0.0.1:22</text>
+  <text x="210" y="40" class="mono telemetry">CLEARANCE // LVL-5</text>
+  <circle cx="820" cy="36" r="3.5" fill="#00ff66" filter="url(#neon-glow)" />
+  <text x="832" y="40" class="mono status-ok">SYSTEM: ONLINE</text>
+
+  <line x1="35" y1="52" x2="885" y2="52" stroke="#102a43" stroke-width="0.8" />
+
+  <!-- Center Identity Block -->
+  <text x="460" y="125" text-anchor="middle" class="mono title" filter="url(#neon-glow)">sallzie</text>
+  <text x="460" y="155" text-anchor="middle" class="mono subtitle">[ ACCESS GRANTED // ROOT_PRIVILEGES // ACTIVE ]</text>
+
+  <!-- Footer Telemetry Strip -->
+  <line x1="35" y1="178" x2="885" y2="178" stroke="#102a43" stroke-width="0.8" />
+  <text x="35" y="195" class="mono telemetry">KERNEL: LINUX-HARDENED</text>
+  <text x="460" y="195" text-anchor="middle" class="mono telemetry">SHA256: 9F8A27C...01BC</text>
+  <text x="885" y="195" text-anchor="end" class="mono telemetry">ENV: PRODUCTION</text>
+</svg>
